@@ -1,0 +1,110 @@
+"+----------------------------------------------------------------------------------------+
+" 基本設定
+"+----------------------------------------------------------------------------------------+
+:set nopreload
+
+"ブラウザタイトルの変更
+set titlestring=Fx
+"メニュー/ツール/リンクを表示
+"set guioptions=mT
+set guioptions=rmT
+"ページ全体で検索語を強調表示
+set hlsearch
+
+set wildoptions=auto
+set complete=slfbS
+
+set! browser.tabs.tabMaxWidth=128
+set! browser.tabs.tabMinWidth=128
+
+colo sweets
+
+"+----------------------------------------------------------------------------------------+
+" キーマップ設定
+"+----------------------------------------------------------------------------------------+
+
+"yで選択範囲をコピー
+map y :echo 'Yank!'<CR>Y
+let g:smooziee_scroll_amount="200"
+map j 4<C-e>
+map k 4<C-y>
+map h <C-p>
+map l <C-n>
+map r :reload<CR>
+map d :tabclose<CR>
+" map s :saveas<CR>
+map gl :tabm +1<CR>
+map gh :tabm -1<CR>
+
+map  <M-c> <C-v><M-c>
+imap <C-f> <Right>
+imap <C-b> <Left>
+imap <C-n> <Down>
+imap <M-a> <C-v><M-a>
+imap <M-z> <C-v><M-z>
+imap <M-x> <C-v><M-x>
+imap <M-c> <C-v><M-c>
+imap <M-v> <C-v><M-v>
+cmap <C-f> <Right>
+cmap <C-b> <Left>
+cmap <C-n> <Down>
+cmap <M-a> <C-v><M-a>
+cmap <M-z> <C-v><M-z>
+cmap <M-x> <C-v><M-x>
+cmap <M-c> <C-v><M-c>
+cmap <M-v> <C-v><M-v>
+
+" 設定ファイルを再読み込み
+map ,s :source ~/.vimperatorrc<CR>
+map ,S :mapc<CR>:cmapc<CR>:imapc<CR>:source ~/.vimperatorrc<CR>
+
+
+"+----------------------------------------------------------------------------------------+
+" プラグイン設定
+"+----------------------------------------------------------------------------------------+
+
+"<C-S-c>でタイトルとURLをコピー(copy.js)
+map <C-C> :copy titleAndURL<CR>
+
+"" ldr_cooperation.js
+""let g:ldrc_captureMappings = "['t', 'h', 'l', 'j', 'k', 'p', 'o', '?']"
+"let g:ldrc_captureMappings = "[ 'j', 'k', 'p', 'o', '?']"
+"let g:ldrc_hints = "true"
+"let g:ldrc_intelligence_bind = "true"
+"let g:ldrc_skip = "0.2"
+
+
+" feedSomeKeys.js
+autocmd LocationChange .* fmapc
+:autocmd LocationChange reader\\.livedoor\\.com/reader :fmap j k s a p o v c w r u g <Space> <S-Space> z b < >
+:autocmd LocationChange fastladder\\.com/reader :fmap j k s a p o v c w r u g <Space> <S-Space> z b < >
+:autocmd LocationChange mail\\.google\\.com/mail :fmap -depth 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc
+:autocmd LocationChange www\\.google\\.co\\.jp/reader :fmap! -vkey j k n p m s t v A r S N P X O gh ga gs gt gu u / ?
+
+
+"map ,ni :nicoinfo
+"map ,np :nicopause 
+"map ,nm :nicomute
+"map ,nv :nicommentvisible
+"map ,nz :nicosize
+"map ,ns :nicoseek 
+
+" nextlink 
+" let g:nextlink_followlink = "false"
+
+
+"
+" for Plugin settings
+"
+
+" block referer
+autocmd LocationChange .* 				set! network.http.sendRefererHeader=2
+autocmd LocationChange reader\.livedoor\.com/reader 	set! network.http.sendRefererHeader=1
+autocmd LocationChange fastladder\.com/reader 		set! network.http.sendRefererHeader=1
+autocmd LocationChange localhost   			set! network.http.sendRefererHeader=0
+autocmd LocationChange 127\.0\.0\.1  			set! network.http.sendRefererHeader=0
+autocmd LocationChange www\.google\.co\.jp 		set! network.http.sendRefererHeader=0
+autocmd LocationChange www\.tumblr\.com 		set! network.http.sendRefererHeader=0
+autocmd LocationChange .*\.tumblr\.com 			set! network.http.sendRefererHeader=0
+
+

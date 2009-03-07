@@ -1,0 +1,19 @@
+escape ^Z^Z
+startup_message off
+
+defscrollback 4000
+
+bind n screen -t "zsh" zsh
+bind w windowlist -b
+#bind 2 split
+#bind o focus
+#bind 1 only
+#bind 0 remove
+
+hardstatus on
+#caption always “%{b RK} %y/%m/%d(%D)%c:%s %{bu dr} | %-w%{=bu CK}%n %t%{-}%+w”
+hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+#hardstatus string ”[screen %n: %t] %h”
+#defhstatus "^En:^Et"
+
+
