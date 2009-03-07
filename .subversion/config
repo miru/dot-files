@@ -10,7 +10,7 @@
 ### Note that this option only prevents saving of *new* passwords;
 ### it doesn't invalidate existing passwords.  (To do that, remove
 ### the cache files by hand as described in the Subversion book.)
-# store-passwords = no
+store-passwords = yes
 ### Set store-auth-creds to 'no' to avoid storing any subversion
 ### credentials in the auth/ area of your config directory.
 ### It defaults to 'yes'.  Note that this option only prevents
@@ -68,7 +68,7 @@
 ### Set global-ignores to a set of whitespace-delimited globs
 ### which Subversion will ignore in its 'status' output, and
 ### while importing or adding files and directories.
-# global-ignores = *.o *.lo *.la #*# .*.rej *.rej .*~ *~ .#* .DS_Store
+global-ignores = *.o *.lo *.la #*# .*.rej *.rej .*~ *~ .#* .DS_Store
 ### Set log-encoding to the default encoding for log messages
 # log-encoding = latin1
 ### Set use-commit-times to make checkout/update/switch/revert
@@ -80,7 +80,7 @@
 ### Set enable-auto-props to 'yes' to enable automatic properties
 ### for 'svn add' and 'svn import', it defaults to 'no'.
 ### Automatic properties are defined in the section 'auto-props'.
-# enable-auto-props = yes
+enable-auto-props = yes
 
 ### Section for configuring automatic properties.
 [auto-props]
@@ -90,14 +90,15 @@
 ### '?').  All entries which match will be applied to the file.
 ### Note that auto-props functionality must be enabled, which
 ### is typically done by setting the 'enable-auto-props' option.
-# *.c = svn:eol-style=native
-# *.cpp = svn:eol-style=native
-# *.h = svn:eol-style=native
-# *.dsp = svn:eol-style=CRLF
-# *.dsw = svn:eol-style=CRLF
-# *.sh = svn:eol-style=native;svn:executable
-# *.txt = svn:eol-style=native
-# *.png = svn:mime-type=image/png
-# *.jpg = svn:mime-type=image/jpeg
-# Makefile = svn:eol-style=native
+*.c = svn:eol-style=native
+*.cpp = svn:eol-style=native
+*.h = svn:eol-style=native
+*.dsp = svn:eol-style=CRLF
+*.dsw = svn:eol-style=CRLF
+*.sh = svn:eol-style=native;svn:executable
+*.csh = svn:eol-style=native;svn:executable
+*.txt = svn:eol-style=native
+*.png = svn:mime-type=image/png
+*.jpg = svn:mime-type=image/jpeg
+Makefile = svn:eol-style=native
 
