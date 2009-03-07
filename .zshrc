@@ -11,7 +11,6 @@ export SVN_EDITOR=vi
 #
 export LANG=ja_JP.UTF-8
 
-
 ## Default shell configuration
 #
 # set prompt

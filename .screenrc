@@ -1,3 +1,7 @@
+#
+#
+#
+
 escape ^Z^Z
 startup_message off
 
