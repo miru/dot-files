@@ -35,23 +35,23 @@ map d :tabclose<CR>
 map gl :tabm +1<CR>
 map gh :tabm -1<CR>
 
-map  <M-c> <C-v><M-c>
-imap <C-f> <Right>
-imap <C-b> <Left>
-imap <C-n> <Down>
-imap <M-a> <C-v><M-a>
-imap <M-z> <C-v><M-z>
-imap <M-x> <C-v><M-x>
-imap <M-c> <C-v><M-c>
-imap <M-v> <C-v><M-v>
-cmap <C-f> <Right>
-cmap <C-b> <Left>
-cmap <C-n> <Down>
-cmap <M-a> <C-v><M-a>
-cmap <M-z> <C-v><M-z>
-cmap <M-x> <C-v><M-x>
-cmap <M-c> <C-v><M-c>
-cmap <M-v> <C-v><M-v>
+"map  <M-c> <C-v><M-c>
+"imap <C-f> <Right>
+"imap <C-b> <Left>
+"imap <C-n> <Down>
+"imap <M-a> <C-v><M-a>
+"imap <M-z> <C-v><M-z>
+"imap <M-x> <C-v><M-x>
+"imap <M-c> <C-v><M-c>
+"imap <M-v> <C-v><M-v>
+"cmap <C-f> <Right>
+"cmap <C-b> <Left>
+"cmap <C-n> <Down>
+"cmap <M-a> <C-v><M-a>
+"cmap <M-z> <C-v><M-z>
+"cmap <M-x> <C-v><M-x>
+"cmap <M-c> <C-v><M-c>
+"cmap <M-v> <C-v><M-v>
 
 " 設定ファイルを再読み込み
 map ,s :source ~/.vimperatorrc<CR>
@@ -65,26 +65,20 @@ map ,S :mapc<CR>:cmapc<CR>:imapc<CR>:source ~/.vimperatorrc<CR>
 "<C-S-c>でタイトルとURLをコピー(copy.js)
 map <C-C> :copy titleAndURL<CR>
 
-
-" feedSomeKeys.js
+" feedSomeKeys_2.js
 autocmd LocationChange .* fmapc
 :autocmd LocationChange reader\\.livedoor\\.com/reader :fmap j k s a p o v c w r u g <Space> <S-Space> z b < >
 :autocmd LocationChange fastladder\\.com/reader :fmap j k s a p o v c w r u g <Space> <S-Space> z b < >
 :autocmd LocationChange mail\\.google\\.com/mail :fmap -depth 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc
 :autocmd LocationChange www\\.google\\.co\\.jp/reader :fmap! -vkey j k n p m s t v A r S N P X O gh ga gs gt gu u / ?
 
-
+" nictrl
 "map ,ni :nicoinfo
 "map ,np :nicopause 
 "map ,nm :nicomute
 "map ,nv :nicommentvisible
 "map ,nz :nicosize
 "map ,ns :nicoseek 
-
-
-"
-" for Plugin settings
-"
 
 " block referer
 autocmd LocationChange .* 				set! network.http.sendRefererHeader=2
@@ -95,5 +89,4 @@ autocmd LocationChange 127\.0\.0\.1  			set! network.http.sendRefererHeader=0
 autocmd LocationChange www\.google\.co\.jp 		set! network.http.sendRefererHeader=0
 autocmd LocationChange www\.tumblr\.com 		set! network.http.sendRefererHeader=0
 autocmd LocationChange .*\.tumblr\.com 			set! network.http.sendRefererHeader=0
-
 
