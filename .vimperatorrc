@@ -6,7 +6,6 @@
 "ブラウザタイトルの変更
 set titlestring=Fx
 "メニュー/ツール/リンクを表示
-"set guioptions=mT
 set guioptions=rmT
 "ページ全体で検索語を強調表示
 set hlsearch
@@ -66,13 +65,6 @@ map ,S :mapc<CR>:cmapc<CR>:imapc<CR>:source ~/.vimperatorrc<CR>
 "<C-S-c>でタイトルとURLをコピー(copy.js)
 map <C-C> :copy titleAndURL<CR>
 
-"" ldr_cooperation.js
-""let g:ldrc_captureMappings = "['t', 'h', 'l', 'j', 'k', 'p', 'o', '?']"
-"let g:ldrc_captureMappings = "[ 'j', 'k', 'p', 'o', '?']"
-"let g:ldrc_hints = "true"
-"let g:ldrc_intelligence_bind = "true"
-"let g:ldrc_skip = "0.2"
-
 
 " feedSomeKeys.js
 autocmd LocationChange .* fmapc
@@ -88,9 +80,6 @@ autocmd LocationChange .* fmapc
 "map ,nv :nicommentvisible
 "map ,nz :nicosize
 "map ,ns :nicoseek 
-
-" nextlink 
-" let g:nextlink_followlink = "false"
 
 
 "
