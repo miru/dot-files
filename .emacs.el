@@ -1,7 +1,7 @@
 ;
+; ~/.emacs.el
 ;
-;
-; last updated : 2009/03/08 21:30:00
+; Last-Modified: 2009/03/08 21:30:00
 ;
 ;
 
@@ -47,7 +47,7 @@
 (require 'time-stamp)
 (add-hook 'before-save-hook 'time-stamp)
 (setq time-stamp-active t)
-(setq time-stamp-start "last updated : ")
+(setq time-stamp-start "Last-Modified: ")
 (setq time-stamp-format "%04y/%02m/%02d %02H:%02M:%02S")
 (setq time-stamp-end " \\|$")
 
@@ -64,4 +64,6 @@
 ;(add-hook 'find-file-not-found-hooks 'auto-insert)
 
 (setq compilation-window-height 10)
+
+(set-language-environment "Japanese")
 
