@@ -1,5 +1,6 @@
 #
-#
+# ~/.screenrc
+# Last-Modified: 2009/03/08 22:32:31
 #
 
 escape ^Z^Z

@@ -1,7 +1,7 @@
 ;
 ; ~/.emacs.el
 ;
-; Last-Modified: 2009/03/08 21:30:00
+; Last-Modified: 2009/03/08 22:32:22
 ;
 ;
 
@@ -9,7 +9,6 @@
 (column-number-mode 1)
 
 (if window-system (progn
-
 (set-face-foreground 'font-lock-comment-face "MediumSeaGreen")
 (set-face-foreground 'font-lock-string-face  "purple")
 (set-face-foreground 'font-lock-keyword-face "blue")
@@ -21,7 +20,6 @@
 (set-face-foreground 'font-lock-constant-face "black")
 (set-face-foreground 'font-lock-warning-face "blue")
 (set-face-bold-p 'font-lock-warning-face nil)
-
 ))
 
 ;; デフォルトの透明度を設定する (85%)
@@ -49,7 +47,8 @@
 (setq time-stamp-active t)
 (setq time-stamp-start "Last-Modified: ")
 (setq time-stamp-format "%04y/%02m/%02d %02H:%02M:%02S")
-(setq time-stamp-end " \\|$")
+;(setq time-stamp-end " \\|$")
+(setq time-stamp-end "$")
 
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)

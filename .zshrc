@@ -1,4 +1,7 @@
 #!
+# ~/.zshrc
+# Last-Modified: 2009/03/08 22:32:43
+#
 
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
 export SVN_EDITOR=vi
