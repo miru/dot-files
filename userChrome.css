@@ -1,0 +1,33 @@
+@charset 'utf-8';
+ * {
+	font-family: 'Lucida Grande', '繝偵Λ繧ｮ繝手ｧ偵ざ Pro W3' !important;
+}
+
+#context-back,
+#context-forward,
+#context-reload,
+#context-stop,
+#context-bookmarkpage,
+#context-sep-stop,
+#context-savepage,
+#context-sep-viewbgimage,
+#context-sendpage{
+	display:none !important;}
+
+
+/* 不要なコンテキストメニューを削除　＜アンカー上＞ */
+
+#context-openlink,
+#context-sendpage,
+#context-copyemail,
+#context-sep-open,
+#context-openlinkintab,
+#context-bookmarklink,
+menuitem[label="リンク URL をメールで送信..."]{
+	display:none !important;}
+
+
+/* 不要なコンテキストメニューを非表示 ＜画像上＞ */
+#context-sendimage,
+#context-blockimage{
+	display:none !important;}
