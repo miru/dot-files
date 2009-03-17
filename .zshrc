@@ -108,7 +108,7 @@ autoload zed
 
 ## Prediction configuration
 #
-#autoload predict-on
+autoload predict-on
 #predict-off
 
 
