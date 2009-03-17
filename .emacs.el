@@ -66,3 +66,6 @@
 
 (set-language-environment "Japanese")
 
+;(require 'emacs-keybind)
+
+

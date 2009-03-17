@@ -1,6 +1,6 @@
 #!
 # ~/.zshrc
-# Last-Modified: 2009/03/08 22:32:43
+# Last-Modified: 2009/03/17 20:59:57
 #
 
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
@@ -13,6 +13,11 @@ export SVN_EDITOR=vi
 # LANG
 #
 export LANG=ja_JP.UTF-8
+case ${UID} in
+0)
+    LANG=C
+    ;;
+esac
 
 ## Default shell configuration
 #
@@ -134,71 +139,45 @@ alias df="df -h"
 
 alias su="su -l"
 
-case "${OSTYPE}" in
-darwin*)
-    alias updateports="sudo port selfupdate; sudo port outdated"
-    alias portupgrade="sudo port upgrade installed"
-    ;;
-freebsd*)
-    case ${UID} in
-    0)
-        updateports() 
-        {
-            if [ -f /usr/ports/.portsnap.INDEX ]
-            then
-                portsnap fetch update
-            else
-                portsnap fetch extract update
-            fi
-            (cd /usr/ports/; make index)
-
-            portversion -v -l \<
-        }
-        alias appsupgrade='pkgdb -F && BATCH=YES NO_CHECKSUM=YES portupgrade -a'
-        ;;
-    esac
-    ;;
-esac
-
-
-## terminal configuration
-#
-unset LSCOLORS
 case "${TERM}" in
-xterm)
-    export TERM=xterm-color
+xterm|xterm-color)
+    export LSCOLORS=exfxcxdxbxegedabagacad
+    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+    zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+    ;;
+kterm-color)
+    stty erase '^H'
+    export LSCOLORS=exfxcxdxbxegedabagacad
+    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+    zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
     ;;
 kterm)
-    export TERM=kterm-color
-    # set BackSpace control character
-    stty erase
+    stty erase '^H'
     ;;
 cons25)
     unset LANG
     export LSCOLORS=ExFxCxdxBxegedabagacad
     export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-    zstyle ':completion:*' list-colors \
-        'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
+    zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
+    ;;
+jfbterm-color)
+    export LSCOLORS=gxFxCxdxBxegedabagacad
+    export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+    zstyle ':completion:*' list-colors 'di=;36;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
     ;;
 esac
 
 # set terminal title including current directory
 #
 case "${TERM}" in
-kterm*|xterm*)
+xterm|xterm-color|kterm|kterm-color)
     precmd() {
         echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
     }
-    export LSCOLORS=exfxcxdxbxegedabagacad
-    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-    zstyle ':completion:*' list-colors \
-        'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
     ;;
 esac
 
-#autoload -U colors colors PROMPT="%{$fg[green]%}%#%{$reset_color%} " precmd () { PROMPT="%{%(?.$fg[green].$fg[red])%}%#%{$reset_color%} " } 
-
 ## load user .zshrc configuration file
 #
-[ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
+[ -f ${HOME}/.zshrc.mine ] && source ${HOME}/.zshrc.mine
 
