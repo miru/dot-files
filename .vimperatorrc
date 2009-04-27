@@ -39,6 +39,7 @@ map d :tabclose<CR>
 " map s :saveas<CR>
 map gl :tabm +1<CR>
 map gh :tabm -1<CR>
+map A :sbm -s d<CR>
 
 "map  <M-c> <C-v><M-c>
 "imap <C-f> <Right>
