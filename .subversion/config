@@ -16,7 +16,7 @@ store-passwords = yes
 ### It defaults to 'yes'.  Note that this option only prevents
 ### saving of *new* credentials;  it doesn't invalidate existing
 ### caches.  (To do that, remove the cache files by hand.)
-# store-auth-creds = no
+store-auth-creds = no
 
 ### Section for configuring external helper applications.
 [helpers]
