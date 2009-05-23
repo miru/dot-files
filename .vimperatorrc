@@ -6,7 +6,7 @@
 "+----------------------------------------------------------------------------------------+
 " 基本設定
 "+----------------------------------------------------------------------------------------+
-:set nopreload
+":set nopreload
 
 "ブラウザタイトルの変更
 set titlestring=Fx
@@ -17,6 +17,7 @@ set hlsearch
 
 set wildoptions=auto
 set complete=slfbS
+set maxitems=10
 
 set! browser.tabs.tabMaxWidth=128
 set! browser.tabs.tabMinWidth=128
