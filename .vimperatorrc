@@ -22,7 +22,7 @@ set! browser.tabs.tabMaxWidth=128
 set! browser.tabs.tabMinWidth=128
 
 set maxitems=10
-colo sweets
+colo vimplight
 
 "+----------------------------------------------------------------------------------------+
 " キーマップ設定
