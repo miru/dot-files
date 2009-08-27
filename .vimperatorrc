@@ -3,23 +3,14 @@
 " Last-Modified: 2009/03/08 22:32:39
 "
 
-"+----------------------------------------------------------------------------------------+
-" 基本設定
-"+----------------------------------------------------------------------------------------+
-":set nopreload
-
-"ブラウザタイトルの変更
 set titlestring=Fx
-"メニュー/ツール/リンクを表示
 "set guioptions=rmT
 set guioptions=rm
-"ページ全体で検索語を強調表示
 set hlsearch
 
 set wildoptions=auto
 "set complete=slfbS
-set complete=flD
-set maxitems=10
+set complete=l
 
 set! browser.tabs.tabMaxWidth=128
 set! browser.tabs.tabMinWidth=128
@@ -27,19 +18,14 @@ set! browser.tabs.tabMinWidth=128
 set maxitems=10
 colo vimplight
 
-"+----------------------------------------------------------------------------------------+
-" キーマップ設定
-"+----------------------------------------------------------------------------------------+
-
-"yで選択範囲をコピー
 map y :echo 'Yank!'<CR>Y
 let g:smooziee_scroll_amount="200"
-map j 4<C-e>
-map k 4<C-y>
+"map j 4<C-e>
+"map k 4<C-y>
 map h <C-p>
 map l <C-n>
-map r :reload<CR>
-map d :tabclose<CR>
+"map r :reload<CR>
+"map d :tabclose<CR>
 " map s :saveas<CR>
 map gl :tabm +1<CR>
 map gh :tabm -1<CR>
@@ -47,24 +33,18 @@ map A :sbm -s d [undefined]<CR>
 let g:direct_sbm_use_services_by_tag = "d"
 let g:direct_sbm_use_services_by_post = "d"
 
-" 設定ファイルを再読み込み
 map ,s :source ~/.vimperatorrc<CR>
 map ,S :mapc<CR>:cmapc<CR>:imapc<CR>:source ~/.vimperatorrc<CR>
 
 
-"+----------------------------------------------------------------------------------------+
-" プラグイン設定
-"+----------------------------------------------------------------------------------------+
-
-"<C-S-c>でタイトルとURLをコピー(copy.js)
-map <C-C> :copy titleAndURL<CR>
+map <C-c> :copy %URL%<CR>
 
 " feedSomeKeys_2.js
 autocmd LocationChange .* fmapc
-:autocmd LocationChange reader\\.livedoor\\.com/reader :fmap j k s a p o v c w r u g <Space> <S-Space> z b < >
-:autocmd LocationChange fastladder\\.com/reader :fmap j k s a p o v c w r u g <Space> <S-Space> z b < >
-:autocmd LocationChange mail\\.google\\.com/mail :fmap -depth 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc
-:autocmd LocationChange www\\.google\\.co\\.jp/reader :fmap! -vkey j k n p m s t v A r S N P X O gh ga gs gt gu u / ?
+autocmd LocationChange reader\\.livedoor\\.com/reader :fmap j k s a p o v c w r u g <Space> <S-Space> z b < >
+autocmd LocationChange fastladder\\.com/reader :fmap j k s a p o v c w r u g <Space> <S-Space> z b < >
+autocmd LocationChange mail\\.google\\.com/mail :fmap -depth 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc
+autocmd LocationChange www\\.google\\.co\\.jp/reader :fmap! -vkey j k n p m s t v A r S N P X O gh ga gs gt gu u / ?
 
 " block referer
 autocmd LocationChange .* 				set! network.http.sendRefererHeader=2
