@@ -5,6 +5,7 @@
 
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
 export SVN_EDITOR=vi
+export EDITOR=vi
 
 # users generic .zshrc file for zsh(1)
 
