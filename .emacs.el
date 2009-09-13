@@ -1,9 +1,14 @@
 ;
 ; ~/.emacs.el
 ;
-; Last-Modified: 2009/03/08 22:32:22
+; Last-Modified: 2009/09/13 14:32:37
 ;
 ;
+(require 'tramp)
+(setq tramp-default-method "sshx")
+(add-to-list
+  'tramp-multi-connection-function-alist
+  '("sshx" tramp-multi-connect-rlogin "/usr/bin/ssh -t %h -l %u /bin/sh%n"))
 
 (line-number-mode 1)
 (column-number-mode 1)

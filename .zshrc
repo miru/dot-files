@@ -5,6 +5,8 @@
 
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
 export SVN_EDITOR=vi
+SSH_AUTH_SOCK=/tmp/501/SSHKeychain.socket
+
 
 # users generic .zshrc file for zsh(1)
 
