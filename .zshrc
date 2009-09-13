@@ -163,6 +163,8 @@ dumb)
     export PROMPT2="$ "
     unset LSCOLORS
     unset LS_COLORS
+    unset SSH_AUTH_SOCK
+    unalias ls
     ;;
 cons25)
     unset LANG
