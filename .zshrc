@@ -159,7 +159,8 @@ kterm)
     ;;
 dumb)
     stty erase '^H'
-    PROMPT="$ "
+    export PROMPT="$ "
+    export PROMPT2="$ "
     unset LSCOLORS
     unset LS_COLORS
     ;;
