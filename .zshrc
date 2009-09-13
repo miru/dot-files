@@ -155,6 +155,12 @@ kterm-color)
 kterm)
     stty erase '^H'
     ;;
+dumb)
+    stty erase '^H'
+    PROMPT="$ "
+    unset LSCOLORS
+    unset LS_COLORS
+    ;;
 cons25)
     unset LANG
     export LSCOLORS=ExFxCxdxBxegedabagacad
