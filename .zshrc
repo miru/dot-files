@@ -7,6 +7,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
 export SVN_EDITOR=vi
 SSH_AUTH_SOCK=/tmp/501/SSHKeychain.socket
 
+export EDITOR=vi
 
 # users generic .zshrc file for zsh(1)
 
@@ -155,6 +156,12 @@ kterm-color)
     ;;
 kterm)
     stty erase '^H'
+    ;;
+dumb)
+    stty erase '^H'
+    PROMPT="$ "
+    unset LSCOLORS
+    unset LS_COLORS
     ;;
 cons25)
     unset LANG
