@@ -1,0 +1,59 @@
+"
+" ~/.vimperatorrc
+" Last-Modified: 2009/03/08 22:32:39
+"
+
+set titlestring=Fx
+"set guioptions=rmT
+set guioptions=rm
+set hlsearch
+set visualbell
+
+set wildoptions=auto
+"set complete=slfbS
+set complete=l
+
+" set! browser.tabs.tabMaxWidth=96
+" set! browser.tabs.tabMinWidth=96
+
+set maxitems=4
+" colo vimplight
+
+map y :echo 'Yank!'<CR>Y
+let g:smooziee_scroll_amount="200"
+"map j 4<C-e>
+"map k 4<C-y>
+map h <C-p>
+map l <C-n>
+"map r :reload<CR>
+"map d :tabclose<CR>
+" map s :saveas<CR>
+map gl :tabm +1<CR>
+map gh :tabm -1<CR>
+map A :sbm -s d [undefined]<CR>
+let g:direct_sbm_use_services_by_tag = "d"
+let g:direct_sbm_use_services_by_post = "d"
+
+map ,s :source ~/.vimperatorrc<CR>
+map ,S :mapc<CR>:cmapc<CR>:imapc<CR>:source ~/.vimperatorrc<CR>
+
+
+map <C-c> :copy %URL%<CR>
+
+" feedSomeKeys_2.js
+autocmd LocationChange .* fmapc
+autocmd LocationChange reader\\.livedoor\\.com/reader :fmap j k s a p o v c w r u g <Space> <S-Space> z b < >
+autocmd LocationChange fastladder\\.com/reader :fmap j k s a p o v c w r u g <Space> <S-Space> z b < >
+autocmd LocationChange mail\\.google\\.com :fmap c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc
+autocmd LocationChange www\\.google\\.co\\.jp/reader :fmap! -vkey j k n p m s t v A r S N P X O gh ga gs gt gu u / ?
+
+" block referer
+autocmd LocationChange .* 				set! network.http.sendRefererHeader=2
+autocmd LocationChange reader\.livedoor\.com/reader 	set! network.http.sendRefererHeader=1
+autocmd LocationChange fastladder\.com/reader 		set! network.http.sendRefererHeader=1
+autocmd LocationChange localhost   			set! network.http.sendRefererHeader=0
+autocmd LocationChange 127\.0\.0\.1  			set! network.http.sendRefererHeader=0
+autocmd LocationChange www\.google\.co\.jp 		set! network.http.sendRefererHeader=0
+autocmd LocationChange www\.tumblr\.com 		set! network.http.sendRefererHeader=0
+autocmd LocationChange .*\.tumblr\.com 			set! network.http.sendRefererHeader=0
+
