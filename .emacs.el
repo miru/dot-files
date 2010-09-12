@@ -2,15 +2,22 @@
 ;
 ; ~/.emacs.el
 ;
-; Last-Modified: 2009/09/13 15:12:37
+; Last-Modified: 2010/09/12 14:13:35
 ;
 ;
 (require 'tramp)
-(setq tramp-default-method "ssh")
-(add-to-list 'tramp-remote-path "/usr/bin")
+; (setq tramp-default-method "ssh")
+; (add-to-list 'tramp-remote-path "/usr/bin")
 
 (line-number-mode 1)
 (column-number-mode 1)
+
+;; Dired の表示を "ls -aoFLt" にする。
+; (setq dired-listing-switches "-aoFL")
+
+;; 日付が日本語だと、file を読み込む際に
+;;  No file on this line と怒られるので 回避する。
+(add-hook 'dired-mode-hook  '(lambda ()(setenv "LANG" "C")))
 
 (if window-system (progn
 (set-face-foreground 'font-lock-comment-face "MediumSeaGreen")
