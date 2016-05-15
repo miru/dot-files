@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PUSHBULLET_TOKEN=<PUSHBULLET token>
+
 CACHE_DIR=~/tmp/fastcheck_narou_cache
 CHECK_ID="372556:n4830bu 282802:n9902bn"
 NAROU_DIR=~/narou
@@ -30,12 +32,16 @@ do
     DIFF_NUM=`echo $?`
 
     if [ $DIFF_NUM -ne 0 ]; then
-	narou up $NID >/dev/null 2>&1
+	#narou up $NID >/dev/null 2>&1
+	RES=`narou up $NID`
+	curl --header "Access-Token: $PUSHBULLET_TOKEN" --header "Content-Type: application/json" \
+	     --data-binary "{\"body\":\"$RES\",\"title\":\"小説更新\",\"type\":\"note\"}" \
+	     --request POST https://api.pushbullet.com/v2/pushes >/dev/null 2>&1
 	narou ma $NID >/dev/null 2>&1
     fi
-
-    cp $CACHE_FILE.new $CACHE_FILE
-    rm $CACHE_FILE.new
+    
+    cp -f $CACHE_FILE.new $CACHE_FILE
+    rm -f $CACHE_FILE.new
     
 done
 
