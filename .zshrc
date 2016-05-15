@@ -16,6 +16,7 @@ export EDITOR=vi
 # LANG
 #
 export LANG=ja_JP.UTF-8
+export LANGUAGE=ja_JP
 case ${UID} in
 0)
     LANG=C
