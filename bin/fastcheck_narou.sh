@@ -5,7 +5,7 @@
 NID="n4830bu n9902bn n0885dc"
 
 # Set Pushbullet token
-PUSHBULLET_TOKEN=<PUSHBULLET TOKEN>
+PUSHBULLET_TOKEN=o.Uk1r2OH4lTGfzeozK2vTaFpYZv8sXawI
 
 # Set "narou init" dir
 NAROU_DIR=~/narou
@@ -20,11 +20,7 @@ export LANGUAGE=ja_JP
 pushd $NAROU_DIR >/dev/null 2>&1
 /usr/local/bin/narou update $NID >/dev/null 2>&1
 LOGFILE=$NAROU_DIR/log/`/bin/ls -1tr $NAROU_DIR/log | /usr/bin/tail -1`
-
-echo DEBUG:$LOGFILE
-
 RES=`egrep "(DL開始|第[0-9]+部分)" < $LOGFILE`
-echo RES=$RES
 
 if [ "$RES" != "" ]; then 
     /usr/bin/curl --header "Access-Token: $PUSHBULLET_TOKEN" --header "Content-Type: application/json" \
