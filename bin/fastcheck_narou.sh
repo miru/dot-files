@@ -5,7 +5,7 @@
 NID="n4830bu n9902bn n0885dc"
 
 # Set Pushbullet token
-PUSHBULLET_TOKEN=o.Uk1r2OH4lTGfzeozK2vTaFpYZv8sXawI
+PUSHBULLET_TOKEN=<PUSHBULLET TOKEN>
 
 # Set "narou init" dir
 NAROU_DIR=~/narou
