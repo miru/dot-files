@@ -13,7 +13,7 @@
 [Pushbulletのアカウント設定](https://www.pushbullet.com/#settings/account)で”Create Access Token”をポチっとすればトークンが得られます。
 - NAROU_DIR
 -- narou.rb initしたディレクトリを指定します。
-私は ~/narou で narou.rb init していて、このディレクトリをdropboxyで同期させています。
+私は ~/narou で narou.rb init していて、このディレクトリをdropboxで同期させています。
 小説は更新はVPS上で定期実行し、PC上でnarou.rb webを起動しています。
 web uiからKindleタグが付いた小説をまとめてKindleにsendしています。
 自分では完璧じゃない？うふふん。と思っています。
