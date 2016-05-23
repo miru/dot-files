@@ -1,11 +1,11 @@
 #!/bin/bash
 # -*- coding:utf-8 -*-
 
-# Check NID
-NID="n4830bu n9902bn n0885dc n7648bn"
+# tag for check
+TAG="fastcheck"
 
 # Set Pushbullet token
-PUSHBULLET_TOKEN=<PUSHBULLET TOKEN>
+PUSHBULLET_TOKEN=<Pushbullet TOKEN>
 
 # Set "narou init" dir
 NAROU_DIR=~/narou
@@ -17,21 +17,35 @@ export LANGUAGE=ja_JP
 ####
 
 ### main ###
-pushd $NAROU_DIR >/dev/null 2>&1
-/usr/local/bin/narou update $NID >/dev/null 2>&1
+pushd $NAROU_DIR
+
+# Check NID
+NID=`/usr/local/bin/narou list -t $TAG | cat`
+
+# Update
+/usr/local/bin/narou update $NID
+
+# Log check
 LOGFILE=$NAROU_DIR/log/`/bin/ls -1tr $NAROU_DIR/log | /usr/bin/tail -1`
 #LOGFILE=$NAROU_DIR/updatelog_sample.txt                                  # for DEBUG
 
 RES=`cat $LOGFILE | egrep "(DL開始|第[0-9]+部分)"`
 
+# Send push notification if update
 if [ "$RES" != "" ]; then
     RES=`echo "$RES" | perl -pe 's/ID:[0-9]+　(.*) のDL開始/\n\1/g' | perl -pe 's/ \([0-9]+\/[0-9]+\)//g' | perl -pe 's/\n/\\\n/g'`
 
-    /usr/bin/curl --header "Access-Token: $PUSHBULLET_TOKEN" --header "Content-Type: application/json" \
-		  --data-binary "{\"body\":\"$RES\",\"title\":\"注目の小説更新\",\"type\":\"note\"}" \
-		  --request POST https://api.pushbullet.com/v2/pushes
-    #/usr/local/bin/narou mail $NID >/dev/null 2>&1
+    FLG=NG
+    while [ $FLG = "NG" ]
+    do
+	  /usr/bin/curl --header "Access-Token: $PUSHBULLET_TOKEN" --header "Content-Type: application/json" \
+			--data-binary "{\"body\":\"$RES\",\"title\":\"注目の小説更新\",\"type\":\"note\"}" \
+			--request POST https://api.pushbullet.com/v2/pushes
+	  if [ $? -eq 0 ]; then
+	      FLG=OK
+	  fi
+    done
 fi
 
-popd >/dev/null 2>&1
+popd
 # EOF
