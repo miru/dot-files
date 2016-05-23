@@ -1,6 +1,6 @@
 #!
 # ~/.zshrc
-# Last-Modified: 2009/03/17 20:59:57
+# Last-Modified: 2016/05/23 11:53:50
 #
 
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
@@ -15,8 +15,6 @@ export EDITOR=vi
 #
 # LANG
 #
-export LANG=ja_JP.UTF-8
-export LANGUAGE=ja_JP
 case ${UID} in
 0)
     LANG=C
