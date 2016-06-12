@@ -1,7 +1,7 @@
 #!/bin/bash
 # -*- coding:utf-8 -*-
 
-PUSHBULLET_TOKEN=<Pushbullet TOKEN>
+PUSHBULLET_TOKEN=<PUSHBULLET TOKEN>
 NAROU_DIR=~/narou
 export LANG=ja_JP.UTF-8
 export LANGUAGE=ja_JP
@@ -30,6 +30,7 @@ if [ "$RES" != "" ]; then
 	      FLG=OK
 	  fi
     done
+    /usr/local/bin/narou freeze --on end
 fi
 popd
 

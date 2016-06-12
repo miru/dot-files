@@ -2,10 +2,10 @@
 # -*- coding:utf-8 -*-
 
 # tag for check
-TAG="fastcheck"
+TAG=${1:-fastcheck}
 
 # Set Pushbullet token
-PUSHBULLET_TOKEN=<Pushbullet TOKEN>
+PUSHBULLET_TOKEN=<PUSHBULLET TOKEN>
 
 # Set "narou init" dir
 NAROU_DIR=~/narou
@@ -40,11 +40,12 @@ if [ "$RES" != "" ]; then
     do
 	  /usr/bin/curl --header "Access-Token: $PUSHBULLET_TOKEN" --header "Content-Type: application/json" \
 			--data-binary "{\"body\":\"$RES\",\"title\":\"注目の小説更新\",\"type\":\"note\"}" \
-			--request POST "https://api.pushbullet.com/v2/pushes"
+			--request POST https://api.pushbullet.com/v2/pushes
 	  if [ $? -eq 0 ]; then
 	      FLG=OK
 	  fi
     done
+    /usr/local/bin/narou freeze --on end
 fi
 
 popd
