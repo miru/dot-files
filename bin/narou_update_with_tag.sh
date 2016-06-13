@@ -39,7 +39,7 @@ if [ "$RES" != "" ]; then
     while [ $FLG = "NG" ]
     do
 	  /usr/bin/curl --header "Access-Token: $PUSHBULLET_TOKEN" --header "Content-Type: application/json" \
-			--data-binary "{\"body\":\"$RES\",\"title\":\"注目の小説更新\",\"type\":\"note\"}" \
+                        --data-binary "{\"body\":\"$RES\",\"title\":\"小説更新 TAG:$TAG\",\"type\":\"note\"}" \
 			--request POST https://api.pushbullet.com/v2/pushes
 	  if [ $? -eq 0 ]; then
 	      FLG=OK
