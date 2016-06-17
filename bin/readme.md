@@ -18,10 +18,13 @@
 web uiからKindleタグが付いた小説をまとめてKindleにsendしています。
 自分では完璧じゃない？うふふん。と思っています。
 
-### fastcheck_narou.sh
+### narou_update_with_tag.sh
 [narou.rb](https://github.com/whiteleaf7/narou/wiki)を使って小説を更新して、[Pushbullet](https://www.pushbullet.com/)で更新を通知します。
-更新対象はデフォルトだとfastcheckというタグが付いた小説のみを更新します。
+更新対象はデフォルトだとfastcheckというタグが付いた小説のみを更新します。引数で与えられたタグの小説を更新します。
 基本はnarou_update.shと同じですが更新対象を絞る事で動作を速くします。
+> favタグが付いた小説を更新する場合
+
+> $ narou_update_with_tag.sh fav
 
  **[本好きの下剋上](http://ncode.syosetu.com/n4830bu/)のために作りました。神に感謝を！神に祈りを！**
 
