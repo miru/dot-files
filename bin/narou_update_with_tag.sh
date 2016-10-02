@@ -42,22 +42,34 @@ NID=`/usr/local/bin/narou list -t $TAG | cat`
 LOGFILE=$NAROU_DIR/log/`/bin/ls -1tr $NAROU_DIR/log | /usr/bin/tail -1`
 #LOGFILE=$NAROU_DIR/updatelog_sample.txt                                  # for DEBUG
 
-RES=`cat $LOGFILE | egrep "(DL開始|第[0-9]+部分)"`
+#RES=`cat $LOGFILE | egrep "(DL開始|第[0-9]+部分)"`
+RES=`cat $LOGFILE | egrep "(DL開始|第[0-9]+部分.*\(新着\))"`
 
 # Send push notification if update
 if [ "$RES" != "" ]; then
-    RES=`echo "$RES" | perl -pe 's/ID:[0-9]+　(.*) のDL開始/\n\1/g' | perl -pe 's/ \([0-9]+\/[0-9]+\)//g' | perl -pe 's/\n/\\\n/g'`
 
     FLG=NG
     while [ $FLG = "NG" ]
     do
 	case "$NOTIFY_TYPE" in
-	  "PUSHBULLET") /usr/bin/curl --header "Access-Token: $PUSHBULLET_TOKEN" --header "Content-Type: application/json" \
-				      --data-binary "{\"body\":\"$RES\",\"title\":\"小説更新 TAG:$TAG\",\"type\":\"note\"}" \
-				      --request POST https://api.pushbullet.com/v2/pushes
-			;;
-	  "LINE") curl https://notify-api.line.me/api/notify -H "Authorization: Bearer $LINE_TOKEN" -d "message=TAG:$TAG\n$RES"
-		  ;;
+	    "PUSHBULLET")
+		RES=`echo "$RES" | perl -pe 's/ID:[0-9]+　(.*) のDL開始/\n\1/g' | perl -pe 's/ \([0-9]+\/[0-9]+\)//g' | perl -pe 's/\n/\\\n/g'`
+		/usr/bin/curl --header "Access-Token: $PUSHBULLET_TOKEN" --header "Content-Type: application/json" \
+			      --data-binary "{\"body\":\"$RES\",\"title\":\"小説更新 TAG:$TAG\",\"type\":\"note\"}" \
+			      --request POST https://api.pushbullet.com/v2/pushes
+		;;
+	    "LINE")
+		echo "RES_before"
+		echo $RES
+		echo ""
+		RES=`echo "$RES" | perl -pe 's/ID:[0-9]+　(.*) のDL開始/
+\1/g' | perl -pe 's/ \([0-9]+\/[0-9]+\)//g' | perl -pe 's/\n/
+/g'`
+		echo "RES_after"
+		echo $RES
+		/usr/bin/curl https://notify-api.line.me/api/notify -X POST -H "Authorization: Bearer $LINE_TOKEN" \
+			      -F "message=TAG:$TAG$RES"
+		;;
 	esac
 	if [ $? -eq 0 ]; then
 	    FLG=OK
