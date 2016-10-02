@@ -1,11 +1,17 @@
 #!/bin/bash
 # -*- coding:utf-8 -*-
 
+# NOTIFY_TYPE:
+#  PUSHBULLET: PushBullet
+#  LINE: LINE
+NOTIFY_TYPE=LINE
+
 # tag for check
 TAG=${1:-fastcheck}
 
-# Set Pushbullet token
-PUSHBULLET_TOKEN=<PUSHBULLET TOKEN>
+# Get TOKEN
+. `dirname $0`/narou_update.token
+
 
 # Set "narou init" dir
 NAROU_DIR=~/narou
@@ -16,6 +22,13 @@ export LANG=ja_JP.UTF-8
 export LANGUAGE=ja_JP
 ####
 
+# run check
+while  [ `ps -ef|grep /usr/local/bin/narou|wc -l` -ne 1 ]
+do
+    echo "waiting"
+    sleep 30
+done
+       
 ### main ###
 pushd $NAROU_DIR
 
@@ -38,14 +51,19 @@ if [ "$RES" != "" ]; then
     FLG=NG
     while [ $FLG = "NG" ]
     do
-	  /usr/bin/curl --header "Access-Token: $PUSHBULLET_TOKEN" --header "Content-Type: application/json" \
-                        --data-binary "{\"body\":\"$RES\",\"title\":\"小説更新 TAG:$TAG\",\"type\":\"note\"}" \
-			--request POST https://api.pushbullet.com/v2/pushes
-	  if [ $? -eq 0 ]; then
-	      FLG=OK
-	  fi
+	case "$NOTIFY_TYPE" in
+	  "PUSHBULLET") /usr/bin/curl --header "Access-Token: $PUSHBULLET_TOKEN" --header "Content-Type: application/json" \
+				      --data-binary "{\"body\":\"$RES\",\"title\":\"小説更新 TAG:$TAG\",\"type\":\"note\"}" \
+				      --request POST https://api.pushbullet.com/v2/pushes
+			;;
+	  "LINE") curl https://notify-api.line.me/api/notify -H "Authorization: Bearer $LINE_TOKEN" -d "message=TAG:$TAG\n$RES"
+		  ;;
+	esac
+	if [ $? -eq 0 ]; then
+	    FLG=OK
+	fi
     done
-    /usr/local/bin/narou freeze --on end
+#    /usr/local/bin/narou freeze --on end
 fi
 
 popd
