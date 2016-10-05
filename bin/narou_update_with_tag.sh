@@ -43,10 +43,12 @@ LOGFILE=$NAROU_DIR/log/`/bin/ls -1tr $NAROU_DIR/log | /usr/bin/tail -1`
 #LOGFILE=$NAROU_DIR/updatelog_sample.txt                                  # for DEBUG
 
 #RES=`cat $LOGFILE | egrep "(DL開始|第[0-9]+部分)"`
-RES=`cat $LOGFILE | egrep "(DL開始|第[0-9]+部分.*\(新着\))"`
+RES=`cat $LOGFILE | egrep "(DL開始|第[0-9]+部分.*\(新着\)|完結したようです)"`
+RES_NEW=`echo $RES | egrep "新着" | wc -l`
 
 # Send push notification if update
-if [ "$RES" != "" ]; then
+#if [ "$RES" != "" ]; then
+if [ $RES_NEW -ne 0 ]; then
 
     FLG=NG
     while [ $FLG = "NG" ]
