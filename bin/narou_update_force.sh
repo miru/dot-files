@@ -10,7 +10,7 @@ export LANGUAGE=ja_JP
 ####
 
 # run check
-while  [ `ps -ef|grep /usr/local/bin/narou|wc -l` -ne 1 ]
+while  [ `ps -ef|grep narou_update|wc -l` -ne 1 ]
 do
     echo "waiting"
     sleep 30
@@ -20,7 +20,7 @@ done
 pushd $NAROU_DIR
 
 # Update
-/usr/local/bin/narou update -f
+/usr/local/bin/narou update -f -n
 
 
 popd

@@ -33,21 +33,16 @@ done
 pushd $NAROU_DIR
 
 # Check NID
-NID=`/usr/local/bin/narou list -t $TAG | cat`
+NID=`/usr/local/bin/narou list -t $TAG -f nonfrozen | cat`
 
 # Update
-/usr/local/bin/narou update $NID
+/usr/local/bin/narou update -n $NID
 
 # Log check
-LOGFILE=$NAROU_DIR/log/`/bin/ls -1tr $NAROU_DIR/log | /usr/bin/tail -1`
-#LOGFILE=$NAROU_DIR/updatelog_sample.txt                                  # for DEBUG
-
-#RES=`cat $LOGFILE | egrep "(DL開始|第[0-9]+部分)"`
-RES=`cat $LOGFILE | egrep "(DL開始|第[0-9]+部分.*\(新着\)|完結したようです)"`
+RES=`/usr/local/bin/narou update -l | egrep "(DL開始|第[0-9]+部分.*\(新着\)|完結したようです)"`
 RES_NEW=`echo $RES | egrep "新着" | wc -l`
 
 # Send push notification if update
-#if [ "$RES" != "" ]; then
 if [ $RES_NEW -ne 0 ]; then
 
     FLG=NG
@@ -61,14 +56,9 @@ if [ $RES_NEW -ne 0 ]; then
 			      --request POST https://api.pushbullet.com/v2/pushes
 		;;
 	    "LINE")
-		echo "RES_before"
-		echo $RES
-		echo ""
 		RES=`echo "$RES" | perl -pe 's/ID:[0-9]+　(.*) のDL開始/
 \1/g' | perl -pe 's/ \([0-9]+\/[0-9]+\)//g' | perl -pe 's/\n/
 /g'`
-		echo "RES_after"
-		echo $RES
 		/usr/bin/curl https://notify-api.line.me/api/notify -X POST -H "Authorization: Bearer $LINE_TOKEN" \
 			      -F "message=TAG:$TAG$RES"
 		;;
@@ -77,7 +67,6 @@ if [ $RES_NEW -ne 0 ]; then
 	    FLG=OK
 	fi
     done
-#    /usr/local/bin/narou freeze --on end
 fi
 
 popd

@@ -21,7 +21,7 @@ done
 pushd $NAROU_DIR
 
 # Update
-/usr/local/bin/narou update 
+/usr/local/bin/narou update -n -f nonfrozen
 
 
 popd
