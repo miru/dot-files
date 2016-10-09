@@ -13,9 +13,16 @@ wait_other_script
 ### main ###
 pushd $NAROU_DIR
 
-# Update
-$NAROU update -f -n
-tag_add_noconv
+# Check NID
+NAME=`$NAROU -t noconv -e | | awk -F"|" '{print $3}'`
+NID=`$NAROU -t noconv | cat`
+
+
+# Convert
+$NAROU convert $NID
+
+# Send push notification if update
+send_notification 変換完了 "$NAME"
 
 popd
 # EOF

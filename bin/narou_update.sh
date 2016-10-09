@@ -1,28 +1,21 @@
 #!/bin/bash
 # -*- coding:utf-8 -*-
 
-# Set "narou init" dir
-NAROU_DIR=~/narou
+# Get Settings
+. `dirname $0`/narou_update.settings
 
-####
-export LANG=ja_JP.UTF-8
-export LANGUAGE=ja_JP
-####
+# Load function
+. `dirname $0`/narou_update_func.sh
 
 # run check
-while  [ `ps -ef|grep /usr/local/bin/narou|wc -l` -ne 1 ]
-do
-    echo "waiting"
-    sleep 30
-done
-
+wait_other_script
 
 ### main ###
 pushd $NAROU_DIR
 
 # Update
 /usr/local/bin/narou update -n -f nonfrozen
-
+tag_add_noconv
 
 popd
 # EOF

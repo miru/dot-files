@@ -1,20 +1,28 @@
 #!/bin/bash
 
+# Get Settings
+. `dirname $0`/narou_update.settings
+
+# Load function
+. `dirname $0`/narou_update_func.sh
+
 # run check
-while  [ `ps -ef|grep /usr/local/bin/narou|wc -l` -ne 1 ]
-do
-    echo "waiting"
-    sleep 30
-done
+wait_other_script
 
-pushd /home/miru/narou
+pushd $NAROU_DIR
 
-/usr/local/bin/narou s hotentry.auto-mail=false
-/usr/local/bin/narou u -n `/usr/local/bin/narou list -t 未読 -f nonfrozen | cat`
-/usr/local/bin/narou u -n `/usr/local/bin/narou list -t 切 -f nonfrozen | cat`
-/usr/local/bin/narou s hotentry.auto-mail=true
-/usr/local/bin/narou freeze --on end
-#/usr/local/bin/narou freeze --on 404
+$NAROU s hotentry.auto-mail=false
+
+$NAROU u -n `$NAROU list -t 未読 -f nonfrozen | cat`
+tag_add_noconv
+
+$NAROU u -n `$NAROU list -t 切 -f nonfrozen | cat`
+tag_add_noconv
+
+$NAROU s hotentry.auto-mail=true
+
+$NAROU freeze --on end
+$NAROU freeze --on 404
 
 popd
 
