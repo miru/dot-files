@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 # -*- coding:utf-8 -*-
 
 # Get Settings
@@ -14,12 +14,15 @@ wait_other_script
 pushd $NAROU_DIR
 
 # Check NID
-NAME=`$NAROU -t noconv -e | | awk -F"|" '{print $3}'`
-NID=`$NAROU -t noconv | cat`
+NAME=`$NAROU list -t noconv -e | awk -F\| '{print $3}'`
+NID=`$NAROU list -t noconv | cat`
 
 
 # Convert
 $NAROU convert $NID
+
+# remove tag
+$NAROU tag -d noconv $NID
 
 # Send push notification if update
 send_notification 変換完了 "$NAME"
