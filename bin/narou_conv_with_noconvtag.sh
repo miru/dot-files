@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 # -*- coding:utf-8 -*-
 
 # Get Settings
