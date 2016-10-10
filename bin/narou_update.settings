@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# -*- coding:utf-8 -*-
 
 # narou path
 #export NAROU="/usr/local/bin/narou"
@@ -18,6 +18,9 @@ export NOTIFY_TYPE=LINE
 # Get LINE token if you use LINE: https://notify-bot.line.me/my/
 export PUSHBULLET_TOKEN=<PUSHBULLET TOKEN>
 export LINE_TOKEN=<LINE TOKEN>
+
+# no convert tag
+NOCONV_TAG="未変換"
 
 export LANG=ja_JP.UTF-8
 export LANGUAGE=ja_JP

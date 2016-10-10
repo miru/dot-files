@@ -14,8 +14,8 @@ wait_other_script
 pushd $NAROU_DIR
 
 # Update
-$NAROU update -f -n
-tag_add_noconv
+$NAROU update -f -n > $NAROU_LOG
+tag_add_noconv ./log/`ls -1t log | head -1`
 
 popd
 # EOF

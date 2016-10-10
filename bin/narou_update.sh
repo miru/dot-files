@@ -15,7 +15,7 @@ pushd $NAROU_DIR
 
 # Update
 /usr/local/bin/narou update -n
-tag_add_noconv
+tag_add_noconv ./log/`ls -1t log | head -1`
 
 popd
 # EOF
