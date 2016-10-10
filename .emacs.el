@@ -2,7 +2,7 @@
 ;
 ; ~/.emacs.el
 ;
-; Last-Modified: 2010/09/12 14:13:35
+; Last-Modified: 2016/10/10 09:38:31
 ;
 ;
 (require 'tramp)
@@ -11,6 +11,10 @@
 
 (line-number-mode 1)
 (column-number-mode 1)
+
+(set-language-environment "Japanese")
+(prefer-coding-system 'utf-8)
+(set-default 'buffer-file-coding-system 'utf-8-with-signature)
 
 ;; Dired の表示を "ls -aoFLt" にする。
 ; (setq dired-listing-switches "-aoFL")
