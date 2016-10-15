@@ -21,6 +21,7 @@ export LINE_TOKEN=<LINE TOKEN>
 
 # no convert tag
 NOCONV_TAG="未変換"
+NOSEND_TAG="未転送"
 
 export LANG=ja_JP.UTF-8
 export LANGUAGE=ja_JP
