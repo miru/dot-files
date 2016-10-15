@@ -16,8 +16,10 @@ export NOTIFY_TYPE=LINE
 # Set  token
 # Get PushBullet token if you use PushBullet: https://www.pushbullet.com/#settings/account
 # Get LINE token if you use LINE: https://notify-bot.line.me/my/
-export PUSHBULLET_TOKEN=<PUSHBULLET TOKEN>
-export LINE_TOKEN=<LINE TOKEN>
+# Ingegrate Incoming WebHooks if use Slack: https://api.slack.com/incoming-webhooks
+export PUSHBULLET_TOKEN="<PUSHBULLET TOKEN>"
+export LINE_TOKEN="<LINE TOKEN>"
+export SLACK_WEBHOOK="<Slack Webhook>"
 
 # no convert tag
 NOCONV_TAG="未変換"
