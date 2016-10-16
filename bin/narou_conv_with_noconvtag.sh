@@ -14,7 +14,6 @@ wait_other_script
 pushd $NAROU_DIR
 
 # Check NID
-#NAME=`$NAROU list -t $NOCONV_TAG -e | grep -v "ID" | awk -F\| '{print $3}'`
 NAME=`$NAROU list -t $NOCONV_TAG -e | grep -v "タイトル" | awk -F\| '{print $3}'`
 NID=`$NAROU list -t $NOCONV_TAG | cat`
 
@@ -29,10 +28,13 @@ $NAROU tag -a $NOSEND_TAG -c yellow $NID
 # Send push notification if update
 case "$NOTIFY_TYPE" in
     "PUSHBULLET")
-	send_notification_pushbullet "変換完了" "$NAME"
+	send_notification_pushbullet "【変換完了】" "$NAME"
 	;;
     "LINE")
-	send_notification_line "変換完了" "$NAME"
+	send_notification_line "【変換完了】" "$NAME"
+	;;
+    "SLACK")
+	send_notification_slack "【変換完了】" "$NAME"
 	;;
 esac
 

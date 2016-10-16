@@ -1,1 +1,0 @@
-/Users/miru/src/svn/vimperator-plugins/trunk/gmail_biff.js

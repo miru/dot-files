@@ -31,7 +31,7 @@ tag_add_noconv $NAROU_LOG
 RES_NEW=`egrep "新着" $NAROU_LOG`
 
 if [ ! "$RES_NEW" = "" ]; then
-    send_notification "小説更新 TAG:$TAG" "$NAROU_LOG"
+    send_notification "【小説更新】【$TAG】" "$NAROU_LOG"
 fi
 
 popd

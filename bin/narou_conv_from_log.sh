@@ -21,7 +21,7 @@ NID=`echo $NAME | perl -pe 's/ID:/\n/g' | perl -pe 's/^(\d+).*/\1/g' | sort -n`
 /usr/local/bin/narou convert $NID
 
 # Send push notification if update
-send_notification 変換完了 "$NAME"
+send_notification 【変換完了】 "$NAME"
 
 popd
 # EOF

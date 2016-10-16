@@ -1,1 +1,0 @@
-/Users/miru/src/svn/vimperator-plugins/trunk/feedSomeKeys_2.js

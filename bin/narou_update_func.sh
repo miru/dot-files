@@ -42,19 +42,19 @@ send_notification_pushbullet () {
     /usr/bin/curl --header "Access-Token: $PUSHBULLET_TOKEN" --header "Content-Type: application/json" \
 		  --data-binary "{\"title\":\"$1\",\"body\":\"$BODY\",\"type\":\"note\"}" \
 		  --request POST https://api.pushbullet.com/v2/pushes
-    
+
 }
 
 send_notification_line () {
     BODY="$2"
     /usr/bin/curl https://notify-api.line.me/api/notify -X POST -H "Authorization: Bearer $LINE_TOKEN" \
-		  -F "message=【$1】
+		  -F "message=$1
 $BODY"
 }
 
 send_notification_slack () {
     BODY="$2"
-    curl -X POST --data-urlencode "payload={\"channel\": \"#general\", \"username\": \"narou_update\", \"text\": \"【$1】
+    curl -X POST --data-urlencode "payload={\"channel\": \"#general\", \"username\": \"narou_update\", \"text\": \"$1
 $BODY\", \"icon_emoji\": \":books:\"}" $SLACK_WEBHOOK
 
 }
