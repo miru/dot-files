@@ -1,4 +1,4 @@
-# ~/.vimrc
+" ~/.vimrc
 
 set encoding=utf-8
 scriptencoding utf-8
@@ -174,7 +174,7 @@ let g:ctrlp_extensions = ['funky', 'commandline'] " CtrlPの拡張として「fu
 command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
 
 " CtrlPFunkyの有効化
-let g:ctrlp_funky_matchtype = 'path' 
+let g:ctrlp_funky_matchtype = 'path'
 
 "----------------------------------------------------------
 " ag.vimの設定
@@ -183,5 +183,4 @@ if executable('ag') " agが使える環境の場合
   let g:ctrlp_use_caching=0 " CtrlPのキャッシュを使わない
   let g:ctrlp_user_command='ag %s -i --hidden -g ""' " 「ag」の検索設定
 endif
-
 
