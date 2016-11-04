@@ -1,0 +1,39 @@
+{
+  "name": "highlight-column",
+  "main": "./lib/main",
+  "version": "0.5.1",
+  "description": "Highlight column the cursor is at",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tony612/highlight-column.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.151.0"
+  },
+  "dependencies": {},
+  "readme": "# Highlight-column [![Build Status](https://travis-ci.org/tony612/highlight-column.svg?branch=master)](https://travis-ci.org/tony612/highlight-column)\n\nInstall it with `apm` command\n```\napm install highlight-column\n```\nor from *Settings*\n\nHighlight column the cursor is at.\n\n![Screenshot with dark theme](https://f.cloud.github.com/assets/1253659/2365736/b60c9b90-a6da-11e3-8081-fc8753783435.png)\n\nAnd for light theme\n\n![Screenshot with dark theme](https://f.cloud.github.com/assets/1253659/2365739/f9c3c746-a6da-11e3-95aa-2590d855cd8f.png)\n\nYou can toggle the highlight temporarily by running 'Highlight Column: Toggle' after clicking 'cmd+shift+p'.\n\nAnd the opacity can be configured in the package settings.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/tony612/highlight-column/issues"
+  },
+  "homepage": "https://github.com/tony612/highlight-column#readme",
+  "_id": "highlight-column@0.5.1",
+  "_shasum": "04e9d64bc623e9024fbbc97f8e1c2f0d76750b32",
+  "_resolved": "file:..\\d-116423-10864-xwk9gh\\package.tgz",
+  "_from": "..\\d-116423-10864-xwk9gh\\package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "lib\\highlight-column-element.coffee",
+        "lib\\main.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

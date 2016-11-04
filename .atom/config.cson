@@ -1,0 +1,34 @@
+"*":
+  core:
+    disabledPackages: [
+      "highlight-column"
+    ]
+    telemetryConsent: "limited"
+    themes: [
+      "one-dark-ui"
+      "base16-tomorrow-dark-theme"
+    ]
+  editor:
+    fontFamily: "MeiryoKe_Console"
+    fontSize: 16
+    invisibles: {}
+    preferredLineLength: 140
+    showIndentGuide: true
+    showInvisibles: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "6981b276-0fba-cf05-5679-76f25fc66bcd"
+  "git-history": {}
+  "git-plus": {}
+  "hatena-blog-and-fotolife":
+    apiKey: "rplkb5n11n"
+    blogId: "http://mirupreza.hatenablog.com/"
+    hatenaId: "mirupreza"
+    openAfterPost: true
+  minimap: {}
+  "remote-atom":
+    keep_alive: true
+    launch_at_startup: true
+  "remote-edit2": {}
+  welcome:
+    showOnStartup: false
