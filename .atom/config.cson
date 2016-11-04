@@ -1,4 +1,10 @@
 "*":
+  "atom-material-ui":
+    colors:
+      genAccent: true
+    tabs: {}
+    ui:
+      panelContrast: true
   core:
     disabledPackages: [
       "highlight-column"
@@ -6,7 +12,7 @@
     telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
-      "base16-tomorrow-dark-theme"
+      "atom-material-syntax-dark"
     ]
   editor:
     fontFamily: "MeiryoKe_Console"
