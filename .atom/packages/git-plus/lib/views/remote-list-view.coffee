@@ -73,14 +73,14 @@ class ListView extends SelectListView
     args = args.concat([remote, @tag]).filter((arg) -> arg isnt '')
     message = "#{@mode[0].toUpperCase()+@mode.substring(1)}ing..."
     startMessage = notifier.addInfo message, dismissable: true
-    git.cmd(args, cwd: @repo.getWorkingDirectory())
+    git.cmd(args, cwd: @repo.getWorkingDirectory(), {color: true})
     .then (data) ->
       if data isnt ''
-        view.addLine(data).finish()
+        view.setContent(data).finish()
       startMessage.dismiss()
     .catch (data) =>
       if data isnt ''
-        view.addLine(data).finish()
+        view.setContent(data).finish()
       startMessage.dismiss()
 
   pushAndSetUpstream: (remote='') ->
@@ -88,12 +88,12 @@ class ListView extends SelectListView
     args = ['push', '-u', remote, 'HEAD'].filter((arg) -> arg isnt '')
     message = "Pushing..."
     startMessage = notifier.addInfo message, dismissable: true
-    git.cmd(args, cwd: @repo.getWorkingDirectory())
+    git.cmd(args, cwd: @repo.getWorkingDirectory(), {color: true})
     .then (data) ->
       if data isnt ''
-        view.addLine(data).finish()
+        view.setContent(data).finish()
       startMessage.dismiss()
     .catch (data) =>
       if data isnt ''
-        view.addLine(data).finish()
+        view.setContent(data).finish()
       startMessage.dismiss()

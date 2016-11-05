@@ -44,9 +44,10 @@ getRepoForCurrentFile = ->
       reject "no current file"
 
 module.exports = git =
-  cmd: (args, options={ env: process.env }) ->
+  cmd: (args, options={ env: process.env}, {color}={}) ->
     new Promise (resolve, reject) ->
       output = ''
+      args = ['-c', 'color.ui=always'].concat(args) if color
       process = new BufferedProcess
         command: atom.config.get('git-plus.gitPath') ? 'git'
         args: args

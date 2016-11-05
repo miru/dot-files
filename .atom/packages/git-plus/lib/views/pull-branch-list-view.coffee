@@ -37,13 +37,13 @@ module.exports =
       view = OutputViewManager.create()
       startMessage = notifier.addInfo "Pulling...", dismissable: true
       args = ['pull'].concat(@extraArgs, @remote, remoteBranch).filter((arg) -> arg isnt '')
-      git.cmd(args, cwd: @repo.getWorkingDirectory())
+      git.cmd(args, cwd: @repo.getWorkingDirectory(), {color: true})
       .then (data) =>
         @resolve()
-        view.addLine(data).finish()
+        view.setContent(data).finish()
         startMessage.dismiss()
       .catch (error) =>
         ## Should @result be rejected for those depending on this view?
         # @reject()
-        view.addLine(error).finish()
+        view.setContent(error).finish()
         startMessage.dismiss()
