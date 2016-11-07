@@ -26,11 +26,6 @@
     userId: "6981b276-0fba-cf05-5679-76f25fc66bcd"
   "git-history": {}
   "git-plus": {}
-  "hatena-blog-and-fotolife":
-    apiKey: "rplkb5n11n"
-    blogId: "http://mirupreza.hatenablog.com/"
-    hatenaId: "mirupreza"
-    openAfterPost: true
   minimap: {}
   "remote-atom":
     keep_alive: true

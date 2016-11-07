@@ -28,12 +28,12 @@ class InputView extends View
       view = OutputViewManager.create()
       args = @commandEditor.getText().split(' ')
       if args[0] is 1 then args.shift()
-      git.cmd(args, cwd: @repo.getWorkingDirectory())
+      git.cmd(args, cwd: @repo.getWorkingDirectory(), {color: true})
       .then (data) =>
         msg = "git #{args.join(' ')} was successful"
         notifier.addSuccess(msg)
         if data?.length > 0
-          view.addLine data
+          view.setContent data
         else
           view.reset()
         view.finish()
@@ -41,7 +41,7 @@ class InputView extends View
         @currentPane.activate()
       .catch (msg) =>
         if msg?.length > 0
-          view.addLine msg
+          view.setContent msg
         else
           view.reset()
         view.finish()
