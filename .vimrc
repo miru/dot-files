@@ -38,16 +38,16 @@ source $VIMRUNTIME/macros/matchit.vim
 set wildmenu
 set history=5000
 
-if has('mouse')
-    set mouse=a
-    if has('mouse_sgr')
-        set ttymouse=sgr
-    elseif v:version > 703 || v:version is 703 && has('patch632')
-        set ttymouse=sgr
-    else
-        set ttymouse=xterm2
-    endif
-endif
+"if has('mouse')
+"    set mouse=a
+"    if has('mouse_sgr')
+"        set ttymouse=sgr
+"    elseif v:version > 703 || v:version is 703 && has('patch632')
+"        set ttymouse=sgr
+"    else
+"        set ttymouse=xterm2
+"    endif
+"endif
 
 if &term =~ "xterm"
     let &t_SI .= "\e[?2004h"
