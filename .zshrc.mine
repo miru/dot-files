@@ -60,5 +60,11 @@ else
     echo "no ssh-agent"
 fi
 
+alias narou=narou.rb
+
+if [ "$TMUX" = "" ]; then
+    tmux attach
+fi
+
 # EOF
 
