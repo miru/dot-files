@@ -7,12 +7,12 @@ set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 set fileformats=unix,dos,mac
 set ambiwidth=double
 
-set expandtab
+"set expandtab
 set tabstop=4
 set softtabstop=4
-set autoindent
-set smartindent
-set shiftwidth=4
+"set autoindent
+"set smartindent
+"set shiftwidth=4
 
 set incsearch
 set ignorecase
@@ -91,7 +91,7 @@ NeoBundle 'itchyny/lightline.vim'
 " 末尾の全角と半角の空白文字を赤くハイライト
 NeoBundle 'bronson/vim-trailing-whitespace'
 " インデントの可視化
-NeoBundle 'Yggdroot/indentLine'
+"NeoBundle 'Yggdroot/indentLine'
 
 if has('lua') " lua機能が有効になっている場合・・・・・・①
     " コードの自動補完
@@ -116,7 +116,7 @@ NeoBundle 'rking/ag.vim'
 call neobundle#end()
 
 " ファイルタイプ別のVimプラグイン/インデントを有効にする
-filetype plugin indent on
+"filetype plugin indent on
 
 " 未インストールのVimプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定・・・・・・③
 NeoBundleCheck
@@ -183,4 +183,13 @@ if executable('ag') " agが使える環境の場合
   let g:ctrlp_use_caching=0 " CtrlPのキャッシュを使わない
   let g:ctrlp_user_command='ag %s -i --hidden -g ""' " 「ag」の検索設定
 endif
+
+
+" Powerline settings
+set laststatus=2
+set showtabline=2
+set t_Co=256
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 
